@@ -3,22 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro App</title>
+    <title>25-Min Pomodoro Timer App + To-Do List</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="timer">25:00</div>
+        <div id="timer">25:00</div>
     <button id="start">Start</button>
     <button id="reset">Reset</button>
 
-    <h2>To do</h2>
-
     <div class="todo-container">
         <div class="input-todo-container">
-            <input type="text" id="newTodo" placeholder="Add new to-do" autofocus>
+            <input type="text" id="newTodo" placeholder="Add to-do item and press enter" autofocus>
             <div class="press-enter-container">
-                <button id="addTodo">OK</button>
-                <span class="enter-button">Press Enter</span>
             </div>
         </div>
         <ul id="todoList">

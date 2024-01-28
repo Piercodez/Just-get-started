@@ -1,15 +1,19 @@
 body {
-  font-family: 'System UI', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "-apple-system", "system-ui", 'System UI', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
   margin: 50px;
-  background-color: #f2f0e9;
+  background-color: #1C1C1E;
+  color: #1C1C1E;
 }
 
 #timer {
-  font-size: 6em;
-  font-weight: 400;
+  font-size: 10em;
+  font-weight: 350;
   margin-top: 200px;
-  color: #333;
+  margin-bottom: 10px;
+  color: #fff;
+  margin-left: auto; /* Center the text horizontally */
+  margin-right: auto;
 }
 
 button {
@@ -19,7 +23,7 @@ button {
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #007BFF;
+  background-color: #007AFF;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -27,15 +31,15 @@ button {
 }
 
 #start {
-background-color: #007BFF;
-}
-
-#stop {
-  background-color: pink;
+background-color: #007AFF;
+font-size: 1.1em;
+font-weight: 400;
 }
 
 #reset {
-  background-color: #007BFF;
+  background-color: #007AFF;
+  color: #fff;
+  font-size: 1.1em;
   }
 
 #addTodo {
@@ -70,7 +74,10 @@ input, #addTodo {
   border: 0px;
   border-color: #dfdbd1;
   padding: 10px;
+  margin-bottom: 10px;
   font-size: 1em;
+  width: 100%;
+  padding: 15px 0px 15px 15px;
 }
 
 #newTodo {
@@ -79,9 +86,9 @@ input, #addTodo {
 
 #todoList li {
   width: 100%;
-  padding: 15px;
+  padding: 15px 0px 15px 15px;
   margin-bottom: 0px;
-  border: 0.3px solid lightgrey;
+  border: 0.1px solid lightgrey;
   background-color: #fff;
   border-radius: 0; /* Reset border-radius for all items */
   cursor: pointer;
@@ -99,21 +106,15 @@ input, #addTodo {
 }
 
 #todoList li.completed {
-  text-decoration: line-through;
   background-color: lightgreen;
   /* Remove rounded corners for completed items */
   border-radius: 0;
 }
 
 .todo-container {
-  width: 50vw;
+  width: 35vw;
   margin: 0 auto;
 
-.input-todo-container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-}
 
 .press-enter-container {
   position: relative;

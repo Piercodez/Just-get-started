@@ -24,7 +24,7 @@ function startTimer() {
 function updateTimer() {
     if (minutes === 0 && seconds === 0) {
         clearInterval(timer);
-        alert('Pomodoro session completed!');
+        alert('🎉 Pomodoro session completed!');
         resetTimer();
         playAlarmSound();
         document.getElementById('start').textContent = 'Start';
@@ -86,9 +86,36 @@ function updateTodoList() {
         li.textContent = todo.text;
 
         if (todo.completed) {
-            li.style.textDecoration = 'line-through'; // Apply strike-through style
-            li.style.backgroundColor = '#00a67d'; // Apply green background
+            li.style.backgroundColor = '#0A84FF'; // Apply blue background
+             li.style.color = 'white'; // Set text color to white for completed items
         }
+
+        function toggleTodoStyles(element, index) {
+            todoList[index].completed = !todoList[index].completed;
+            updateTodoStyles(element, todoList[index].completed);
+        
+            // Toggle the clicked-border class for the border color
+            element.classList.toggle('clicked-border');
+        }
+
+        function updateTodoList() {
+            const todoListElement = document.getElementById('todoList');
+            todoListElement.innerHTML = ''; // Clear existing list
+        
+            todoList.forEach((todo, index) => {
+                const li = document.createElement('li');
+                li.textContent = todo.text;
+        
+                if (todo.completed) {
+                    li.style.backgroundColor = '#0A84FF'; // Apply green background
+                    li.style.color = 'white'; // Set text color to white for completed items
+                }
+        
+                li.addEventListener('click', () => toggleTodoStyles(li, index));
+                todoListElement.appendChild(li);
+            });
+        }
+        
 
         li.addEventListener('click', () => toggleTodo(index));
         todoListElement.appendChild(li);
