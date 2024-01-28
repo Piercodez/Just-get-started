@@ -1,0 +1,82 @@
+/* styles.css */
+
+body {
+  font-family: 'System ui', 'Inter', sans-serif;
+  background-color: #faf9f7;
+  color: #333;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
+  background-color: rgb(0, 255, 183);
+  font-size: large;
+  padding: 12px 24px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 40px;
+}
+
+button:hover {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.1);
+
+}
+
+#myFormContainer {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  width: 400px;
+  margin-top: 20px;
+}
+
+form {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input[type="submit"] {
+  background-color: rgb(0, 255, 166);
+  color: #333;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: none;
+  font-size: large;
+  padding: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input[type="submit"]:hover {
+  background-color: rgb(0, 255, 225);
+  box-shadow: 2px 2px 16px rgba(0, 255, 174, 0.1);
+  transform: translateY(2px);
+}
