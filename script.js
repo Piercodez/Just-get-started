@@ -65,6 +65,13 @@ function addTodo() {
     }
 }
 
+// Add an event listener for the "Enter" key
+document.getElementById('newTodo').addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        addTodo();
+    }
+});
+
 function toggleTodo(index) {
     todoList[index].completed = !todoList[index].completed;
     updateTodoList();
@@ -80,6 +87,7 @@ function updateTodoList() {
 
         if (todo.completed) {
             li.style.textDecoration = 'line-through'; // Apply strike-through style
+            li.style.backgroundColor = '#00a67d'; // Apply green background
         }
 
         li.addEventListener('click', () => toggleTodo(index));

@@ -11,13 +11,20 @@
     <button id="start">Start</button>
     <button id="reset">Reset</button>
 
-    <h2>Todo List</h2>
-    <ul id="todoList">
-        <!-- Todo items will be added dynamically here -->
-    </ul>
+    <h2>To do</h2>
 
-    <input type="text" id="newTodo" placeholder="New Todo">
-    <button id="addTodo">Add Todo</button>
+    <div class="todo-container">
+        <div class="input-todo-container">
+            <input type="text" id="newTodo" placeholder="New Todo">
+            <div class="press-enter-container">
+                <button id="addTodo">Add Todo</button>
+                <span class="enter-button">Press Enter</span>
+            </div>
+        </div>
+        <ul id="todoList">
+            <!-- Todo items will be added dynamically here -->
+        </ul>
+    </div>
 
     <script src="script.js"></script>
 </body>
