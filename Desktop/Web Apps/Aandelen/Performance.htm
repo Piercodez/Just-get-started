@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://127.0.0.1:5500/performance.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./Performance_files/style1.css">
+  <title>Performance</title>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1187.0" data-gr-ext-installed="">
+<header> 
+  <nav class="navbar">
+    <div class="logo">
+      <img src="./Performance_files/supa logo.svg" alt="Logo" class="logo-img">
+      <h3 class="logo-text">Aandelen.io</h3>
+    </div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="http://127.0.0.1:5500/index1.html">Deelnemers</a></li>
+        <li><a href="http://127.0.0.1:5500/performance.html">Performance</a></li>
+        <li><a href="http://127.0.0.1:5500/waarde.html">Waarde</a></li>
+        <li><a href="http://127.0.0.1:5500/dividend.html">Dividend</a></li>
+        <li><a href="http://127.0.0.1:5500/roadmap.html">Roadmap</a></li>
+      </ul>
+      <button id="mode-toggle" class="dark-mode">
+        <img src="./Performance_files/sun.svg" alt="Switch to Light Mode" class="mode-icon">
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="content-container" id="first">
+  <section class="container">
+    <!-- HTML for the chart -->
+    <canvas id="myChart" width="882" height="440" style="display: block; box-sizing: border-box; height: 220px; width: 441px;"></canvas>
+
+    <div id="form2">
+      <select id="input" class="select-input">
+        <option value="">Kies de maand</option>
+        <option value="Jan">Jan</option>
+        <option value="Feb">Feb</option>
+        <option value="Mar">Mar</option>
+        <option value="Apr">Apr</option>
+        <option value="May">May</option>
+        <option value="Jun">Jun</option>
+        <option value="Jul">Jul</option>
+        <option value="Aug">Aug</option>
+        <option value="Sep">Sep</option>
+        <option value="Oct">Oct</option>
+        <option value="Nov">Nov</option>
+        <option value="Dec">Dec</option>
+      </select>
+      <input type="number" id="punten" placeholder="Omzet">
+      <button id="submit">OK</button>
+    </div>
+
+    <div class="table-container">
+      <table id="logTable">
+        <thead>
+          <tr>
+            <th>Maand</th>
+            <th>Omzet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be dynamically inserted here via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script src="./Performance_files/performance.js"></script>
+<!-- Chart.js -->
+<script src="./Performance_files/chart.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
