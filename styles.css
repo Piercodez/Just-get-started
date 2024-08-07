@@ -31,22 +31,22 @@ button {
 }
 
 #start {
-background-color: #007AFF;
-font-size: 1.1em;
-font-weight: 400;
+  background-color: #007AFF;
+  font-size: 1.1em;
+  font-weight: 400;
 }
 
 #reset {
   background-color: #007AFF;
   color: #fff;
   font-size: 1.1em;
-  }
+}
 
 #addTodo {
   background-color: #333;
   width: 120px;
   height: 45px;
-  }
+}
 
 h2 {
   margin-top: 20px;
@@ -114,7 +114,7 @@ input, #addTodo {
 .todo-container {
   width: 35vw;
   margin: 0 auto;
-
+}
 
 .press-enter-container {
   position: relative;

@@ -4,6 +4,11 @@ let minutes = 25;
 let seconds = 0;
 let todoList = [];
 
+// Load to-do list from localStorage
+window.onload = function() {
+    loadTodos();
+};
+
 function toggleTimer() {
     if (isRunning) {
         clearInterval(timer);
@@ -62,6 +67,7 @@ function addTodo() {
         todoList.push({ text: newTodo, completed: false });
         updateTodoList();
         document.getElementById('newTodo').value = ''; // Clear input
+        saveTodos();
     }
 }
 
@@ -75,6 +81,7 @@ document.getElementById('newTodo').addEventListener('keyup', function(event) {
 function toggleTodo(index) {
     todoList[index].completed = !todoList[index].completed;
     updateTodoList();
+    saveTodos();
 }
 
 function updateTodoList() {
@@ -87,49 +94,33 @@ function updateTodoList() {
 
         if (todo.completed) {
             li.style.backgroundColor = '#0A84FF'; // Apply blue background
-             li.style.color = 'white'; // Set text color to white for completed items
+            li.style.color = 'white'; // Set text color to white for completed items
         }
-
-        function toggleTodoStyles(element, index) {
-            todoList[index].completed = !todoList[index].completed;
-            updateTodoStyles(element, todoList[index].completed);
-        
-            // Toggle the clicked-border class for the border color
-            element.classList.toggle('clicked-border');
-        }
-
-        function updateTodoList() {
-            const todoListElement = document.getElementById('todoList');
-            todoListElement.innerHTML = ''; // Clear existing list
-        
-            todoList.forEach((todo, index) => {
-                const li = document.createElement('li');
-                li.textContent = todo.text;
-        
-                if (todo.completed) {
-                    li.style.backgroundColor = '#0A84FF'; // Apply green background
-                    li.style.color = 'white'; // Set text color to white for completed items
-                }
-        
-                li.addEventListener('click', () => toggleTodoStyles(li, index));
-                todoListElement.appendChild(li);
-            });
-        }
-        
 
         li.addEventListener('click', () => toggleTodo(index));
         todoListElement.appendChild(li);
     });
 }
 
+function saveTodos() {
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+}
+
+function loadTodos() {
+    const savedTodos = localStorage.getItem('todoList');
+    if (savedTodos) {
+        todoList = JSON.parse(savedTodos);
+        updateTodoList();
+    }
+}
+
 function playAlarmSound() {
-    const audio = new Audio('path/to/your/alarm.mp3');
+    const audio = new Audio('/Alarm/Bird alarm.mp3');
     audio.play();
 }
 
 document.getElementById('start').addEventListener('click', toggleTimer);
 document.getElementById('reset').addEventListener('click', resetTimer);
-document.getElementById('addTodo').addEventListener('click', addTodo);
 
 displayTime();
 updateTodoList();
