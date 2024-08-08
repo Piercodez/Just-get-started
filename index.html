@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25-Min Pomodoro Timer App & Kanban Board | pomodorotimers.com</title>
+    <meta name="description" content="Boost your productivity with our 25-minute Pomodoro Timer app. Manage your tasks effectively with our integrated Kanban board.">
+    <meta name="keywords" content="Pomodoro Timer, Productivity, Time Management, Kanban Board, Focus, Work">
+    <meta name="author" content="pomodorotimers.com">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+        </header>
+        <main>
+            <section id="timer-section">
+                <div id="timer">25:00</div>
+                <button id="start">Start</button>
+                <button id="reset">Reset</button>
+            </section>
+
+            <section class="kanban-board">
+                <div class="kanban-column" id="todoColumn">
+                    <h2>To do</h2>
+                    <ul id="todoList" class="task-list">
+                        <!-- Todo items will be added dynamically here -->
+                    </ul>
+                    <div class="input-todo-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                        <input type="text" id="newTodo" placeholder="Add item and press enter" autofocus>
+                    </div>
+                </div>
+                <div class="kanban-column" id="doingColumn">
+                    <h2>Doing</h2>
+                    <ul id="doingList" class="task-list">
+                        <!-- Doing items will be added dynamically here -->
+                    </ul>
+                    <div class="input-todo-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                        <input type="text" id="newDoing" placeholder="Add item and press enter" autofocus>
+                    </div>
+                </div>
+                <div class="kanban-column" id="doneColumn">
+                    <h2>Done</h2>
+                    <ul id="doneList" class="task-list">
+                        <!-- Done items will be added dynamically here -->
+                    </ul>
+                    <div class="input-todo-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                        <input type="text" id="newDone" placeholder="Add item and press enter" autofocus>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="blog-post">
+                <aside class="toc">
+                    <h2 class="blog-header">Table of Contents</h2>
+                    <ul>
+                        <li><a href="#what-is-pomodoro">What is Pomodoro?</a></li>
+                        <li><a href="#what-is-pomodoro-technique">What is the Pomodoro Technique?</a></li>
+                        <li><a href="#pomodoro-timer">What is a Pomodoro Timer?</a></li>
+                        <li><a href="#how-pomodoro-effective">How effective is the Pomodoro Technique?</a></li>
+                        <li><a href="#pomodoro-length">How long is a Pomodoro?</a></li>
+                        <li><a href="#break-activities">What do I do during the breaks?</a></li>
+                        <li><a href="#start-pomodoro">How do I get started with the Pomodoro Technique?</a></li>
+                        <li><a href="#customize-pomodoro">Can I customize the Pomodoro Technique to fit my needs?</a></li>
+                        <li><a href="#what-is-kanban-board">What is a Kanban Board?</a></li>
+                        <li><a href="#benefits-kanban-board">Benefits of Using a Kanban Board</a></li>
+                        <li><a href="#faq-kanban-boards">Common Questions about Kanban Boards</a></li>
+                        <li><a href="#combining-pomodoro-kanban">Combining Pomodoro Technique and Kanban Boards</a></li>
+                        <li><a href="#faq-combining-pomodoro-kanban">Common Questions about Combining Pomodoro and Kanban</a></li>
+                        <li><a href="#origin-kanban">Where does the name 'Kanban' come from?</a></li>
+                    </ul>
+                </aside>
+                <article class="content">
+                    <h1 class="blog-header">25-Min Pomodoro Timer with Kanban Board to Boost your Productivity</h1>
+
+                    <p>Welcome to pomodorotimers.com! Here, we blend the efficiency of the Pomodoro Technique with the organizational power of Kanban boards to boost your productivity. Below, you'll find everything you need to know about these tools.</p>
+
+                    <h2 id="what-is-pomodoro" class="blog-header">What is Pomodoro?</h2>
+                    <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo. It involves breaking work into 25-minute intervals called "Pomodoros" with short breaks in between. This technique helps maintain focus and productivity.</p>
+
+                    <h2 id="what-is-pomodoro-technique" class="blog-header">What is the Pomodoro Technique?</h2>
+                    <p>The Pomodoro Technique is a time management system that encourages people to work with the time they have, rather than against it. Using a timer, you break work into intervals, traditionally 25 minutes, separated by short breaks.</p>
+
+                    <h2 id="pomodoro-timer" class="blog-header">What is a Pomodoro Timer?</h2>
+                    <p>A Pomodoro Timer is a tool used to implement the Pomodoro Technique. It helps you keep track of your 25-minute work sessions and 5-minute breaks, ensuring you follow the method correctly.</p>
+
+                    <h2 id="how-pomodoro-effective" class="blog-header">How effective is the Pomodoro Technique?</h2>
+                    <p>The Pomodoro Technique is highly effective for many people. It helps improve focus, reduces burnout, and can increase productivity by breaking work into manageable intervals.</p>
+
+                    <h2 id="pomodoro-length" class="blog-header">How long is a Pomodoro?</h2>
+                    <p>A single Pomodoro is 25 minutes of focused work, followed by a 5-minute break. After four Pomodoros, take a longer break, typically 15-30 minutes.</p>
+
+                    <h2 id="break-activities" class="blog-header">What do I do during the breaks?</h2>
+                    <p>During breaks, step away from your work. Stretch, take a walk, grab a snack, or do something relaxing. The goal is to refresh your mind before starting the next Pomodoro.</p>
+
+                    <h2 id="start-pomodoro" class="blog-header">How do I get started with the Pomodoro Technique?</h2>
+                    <p>Getting started is simple:
+                    <ul>
+                        <li>Choose a task you want to work on.</li>
+                        <li>Set your timer for 25 minutes.</li>
+                        <li>Work on the task until the timer goes off.</li>
+                        <li>Take a 5-minute break.</li>
+                        <li>Repeat the process.</li>
+                    </ul>
+                    </p>
+
+                    <h2 id="customize-pomodoro" class="blog-header">Can I customize the Pomodoro Technique to fit my needs?</h2>
+                    <p>Yes, the Pomodoro Technique is flexible. You can adjust the length of work sessions and breaks to suit your needs. The key is to maintain a balance between work and rest.</p>
+
+                    <h2 id="what-is-kanban-board" class="blog-header">What is a Kanban Board?</h2>
+                    <p>A Kanban Board is a visual tool used to manage tasks. It consists of columns representing different stages of work, such as "To Do," "Doing," and "Done." Tasks are moved across columns as they progress.</p>
+
+                    <h2 id="benefits-kanban-board" class="blog-header">Benefits of Using a Kanban Board</h2>
+                    <p>Kanban Boards offer numerous benefits, including improved task visibility, better workflow management, and enhanced team collaboration. They help you stay organized and focused on priorities.</p>
+
+                    <h2 id="faq-kanban-boards" class="blog-header">Common Questions about Kanban Boards</h2>
+                    <p>Here are some common questions about Kanban Boards:
+                    <ul>
+                        <li>What tools can I use to create a Kanban Board?</li>
+                        <li>How do I get started with a Kanban Board?</li>
+                        <li>Can I use a Kanban Board for personal tasks?</li>
+                        <li>What are the main components of a Kanban Board?</li>
+                        <li>How does a Kanban Board improve productivity?</li>
+                    </ul>
+                    </p>
+
+                    <h2 id="combining-pomodoro-kanban" class="blog-header">Combining Pomodoro Technique and Kanban Boards</h2>
+                    <p>Combining the Pomodoro Technique with Kanban Boards can supercharge your productivity. Use the Kanban Board to organize tasks and the Pomodoro Timer to focus on one task at a time. This method enhances both planning and execution.</p>
+
+                    <h2 id="faq-combining-pomodoro-kanban" class="blog-header">Common Questions about Combining Pomodoro and Kanban</h2>
+                    <p>Here are some common questions about combining Pomodoro and Kanban:
+                    <ul>
+                        <li>How do I integrate Pomodoro with Kanban?</li>
+                        <li>What are the benefits of using both techniques?</li>
+                        <li>Can I use digital tools to combine Pomodoro and Kanban?</li>
+                        <li>What are some best practices for combining these methods?</li>
+                        <li>How does combining these techniques improve productivity?</li>
+                    </ul>
+                    </p>
+
+                    <h2 id="origin-kanban" class="blog-header">Where does the name 'Kanban' come from?</h2>
+                    <p>The word 'Kanban' comes from Japanese, meaning 'visual signal' or 'card.' It originated from Toyota's manufacturing system to manage production processes. Today, it's widely used in project management.</p>
+                </article>
+            </section>
+        </main>
+        <script src="script.js"></script>
+        <footer>
+            <p>© 2024 Pomodorotimers. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
