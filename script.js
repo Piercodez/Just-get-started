@@ -15,6 +15,8 @@ window.onload = function() {
 dropPositionIndicator.className = 'drop-position-indicator';
 
 function toggleTimer() {
+    playStartSound(); // Play the start sound on both start and stop
+
     if (isRunning) {
         clearInterval(timer);
         isRunning = false;
