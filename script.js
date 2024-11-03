@@ -42,7 +42,6 @@ function loadTodos() {
     updateTodoList();
 }
 
-
 function startTimer() {
     timer = setInterval(updateTimer, 1000); // Start the interval timer
     updateTimer(); // Immediately update the timer display
@@ -378,11 +377,11 @@ function playStartSound() {
     startSound.play();
 }
 
-// // Function to play the stop sound
-// function playStopSound() {
-//     const stopSound = new Audio('Button sounds/stop-sound.mp3');
-//     stopSound.play();
-// }
+// Function to play the stop sound but use the start sound
+function playStopSound() {
+    const startSound = new Audio('Button sounds/start-sound.mp3');
+    startSound.play();
+}
 
 // Function to play the reset sound
 function playResetSound() {
