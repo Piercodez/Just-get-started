@@ -53,7 +53,6 @@ function startTimer() {
 function updateTimer() {
     if (minutes === 0 && seconds === 0) {
         clearInterval(timer);
-        alert('🎉 Pomodoro session completed!');
         resetTimer();
         playAlarmSound();
         document.getElementById('start').textContent = 'Start';
@@ -71,7 +70,7 @@ function updateTimer() {
     displayTime();
 
     // Update the document title with the countdown timer
-  document.title = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} - Pomodoro Timer`;
+    document.title = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} - Pomodoro Timer`;
 }
 
 function resetTimer() {
