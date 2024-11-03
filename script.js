@@ -378,11 +378,11 @@ function playStartSound() {
     startSound.play();
 }
 
-// Function to play the stop sound
-function playStopSound() {
-    const stopSound = new Audio('Button sounds/stop-sound.mp3');
-    stopSound.play();
-}
+// // Function to play the stop sound
+// function playStopSound() {
+//     const stopSound = new Audio('Button sounds/stop-sound.mp3');
+//     stopSound.play();
+// }
 
 // Function to play the reset sound
 function playResetSound() {
