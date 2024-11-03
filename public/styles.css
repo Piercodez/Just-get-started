@@ -1,0 +1,378 @@
+body {
+  font-family: "-apple-system", "system-ui", 'System UI', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin: 50px;
+  background-color: #010203;
+  color: #FFFFFF;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+#timer-section {
+  margin-top: 10px; /* Reduce space above the timer */
+}
+
+#timer {
+  font-size: 7em;
+  font-weight: 450;
+  margin: 20px auto 10px auto; /* Reduce margin-top */
+  color: #fff;
+}
+
+button {
+  font-size: 1em;
+  border-radius: 8px;
+  margin: 5px; 
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #007AFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px; /* Reduce margin-bottom */
+}
+
+#start {
+  background-color: #0A84FF;
+  font-size: 1.1em;
+  font-weight: 400;
+  color: #fff;
+}
+
+#reset {
+  background-color: #0084ff3d;
+  color: #0A84FF;
+  font-size: 1.1em;
+}
+
+h1, h2 {
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-align: left; /* Align headers to the left */
+  margin-left: 24px;
+  margin-right: 24px;
+  display: flex;
+  align-items: center;
+}
+
+/* #todoColumn h2::before {
+  content: '•';
+  color: #4ade80;
+  margin-right: 8px;
+}
+
+#doingColumn h2::before {
+  content: '•';
+  color: #0A84FF;
+  margin-right: 8px;
+}
+
+#doneColumn h2::before {
+  content: '•';
+  color: #8b5cf6;
+  margin-right: 8px;
+} */
+
+.kanban-board {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 32px; /* Reduce margin-top */
+}
+
+.kanban-column {
+  /* background-color: #111111; */
+  border: 1px solid #161616;
+  padding: 12px;
+  border-radius: 20px;
+  width: 30%;
+  margin: 8px;
+  height: 500px; /* Set the fixed height for columns */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: relative; /* For sticky positioning of the input field */
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  width: 100%;
+  font-size: 1em;
+  background: none;
+  border: none;
+  color: #fff;
+  outline: none;
+  resize: none; /* Disable manual resizing */
+  height: auto; /* Start with auto height */
+  min-height: 24px; /* Minimum height to fit one line */
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  line-height: 1.5; /* Adjust line height for better text alignment */
+  box-sizing: border-box; /* Include padding in height */
+  padding: 4px 0; /* Add some padding for alignment */
+}
+
+textarea::placeholder {
+  color: #52525b; /* Keep the placeholder color consistent */
+  /* border: 1px solid red; */
+}
+
+textarea, input, .task-list li {
+  font-family: inherit; /* Use the same font */
+  font-weight: normal; /* Ensure consistent weight */
+}
+
+.input-todo-container {
+  position: relative;
+  display: flex; /* Use flexbox to align items horizontally */
+  align-items: center; /* Vertically center both the + icon and the text */
+  margin: 12px;
+}
+
+.input-todo-container.sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center; /* Vertically center the icon and textarea */
+}
+
+.input-todo-container svg {
+  margin-right: 8px; /* Space between + icon and textarea */
+  flex-shrink: 0; /* Prevent the + icon from shrinking */
+  font-size: 1.2em; /* Adjust size if necessary */
+}
+
+#newTodo, #newDoing, #newDone {
+  width: 100%;
+  font-size: 1em;
+  background: none;
+  border: none;
+  color: #fff;
+  outline: none;
+  height: 32px; /* Set fixed height */
+  line-height: 32px; /* Vertically centers text within 32px height */
+  box-sizing: border-box;
+  padding-left: 10px; /* Adjust padding to match icon position */
+}
+
+#newTodo::placeholder,
+#newDoing::placeholder,
+#newDone::placeholder {
+  color: #52525b; /* Placeholder color */
+}
+
+.task-list {
+  list-style: none;
+  padding: 10px;
+  margin: 0px;
+  flex-grow: 1; /* Allow the list to grow and take available space */
+  overflow-y: auto; /* Ensure the list can scroll */
+  text-align: left; /* Ensure the parent container doesn't center the text */
+}
+
+.task-list li {
+  word-wrap: break-word; /* Breaks long words and wraps them */
+  overflow-wrap: break-word; /* Ensures words are wrapped correctly */
+  white-space: normal; /* Allows text to wrap */
+  text-align: left !important; /* Force left alignment */
+  padding-left: 10px; /* Optional: Add some left padding for spacing */
+  background-color: #121314;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  color: #fff;
+  padding: 24px;
+  /* border: 0.5px solid #1C1C1E; */
+  cursor: pointer;
+  position: relative; /* Ensure positioning context for buttons */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.dragging {
+  opacity: 1; /* No opacity change when dragging */
+}
+
+.drop-position-indicator {
+  height: 2px;
+  background-color: #0A84FF;
+  margin-bottom: 10px;
+}
+
+.delete-button,
+.edit-button {
+  opacity: 0; /* Initially hidden */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(10px); /* Offset to slide in */
+  z-index: 999;
+  background-color: #121314;
+  border: none;
+  cursor: pointer;
+  color: #52525b;
+  margin: 4px;
+  padding: 4px;
+  transition: opacity 0.2s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+/* Reveal buttons on hover */
+.task-list li:hover .delete-button,
+.task-list li:hover .edit-button {
+  opacity: 1; /* Fade in */
+  transform: translateY(-50%) translateX(0); /* Slide to original position */
+}
+
+.edit-button {
+  right: 40px; /* Adjust positioning as needed */
+}
+
+.delete-button {
+  right: 0;
+}
+
+li:hover .delete-button,
+li:hover .edit-button {
+  display: inline-block;
+}
+
+.edit-input {
+  width: 100%;
+  font-size: 1em;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  text-align: left; /* Left-align text */
+}
+
+.editing {
+  background-color: #27272a;
+  padding: 8px 4px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.icon-tabler {
+  margin-right: 4px; /* Add margin-right to the plus icon */
+}
+
+#blog-post {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 140px;
+  padding: 60px;
+  text-align: left;
+}
+#blog-post .content {
+  width: 70%;
+}
+#blog-post .toc {
+  width: 25%;
+  position: sticky;
+  top: 20px;
+  margin-right: 80px;
+  align-self: flex-start;
+}
+#blog-post .toc ul {
+  list-style: none;
+  padding: 0;
+}
+#blog-post .toc ul li {
+  margin-bottom: 10px;
+}
+#blog-post .toc ul li a {
+  color: #0A84FF;
+  text-decoration: none;
+}
+#blog-post .toc ul li a:hover {
+  text-decoration: underline;
+}
+.blog-header {
+  margin-top: 30px;
+  margin-left: 0px;
+}
+
+/* Additional styles for the blog post */
+
+.blog-header {
+  margin-left: 0;
+  margin-top: 1em; /* Add some top margin for spacing */
+  margin-bottom: 0.5em; /* Add some bottom margin for spacing */
+  text-align: left; /* Ensure headers are left-aligned */
+}
+
+.blog-container {
+  padding-top: 200px; /* Add extra space on top of the blogpost */
+}
+
+.blog-post {
+  display: flex;
+  flex-direction: row;
+}
+
+.table-of-contents {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.blog-content {
+  flex: 2;
+}
+
+@media (max-width: 768px) {
+  .kanban-board {
+      flex-direction: column;
+      align-items: center; /* Center align columns */
+  }
+
+  .kanban-column {
+      width: 100%; /* Make columns full width on smaller devices */
+      max-width: 100%; /* Ensure columns don't exceed body width */
+  }
+
+  #blog-post {
+      flex-direction: column;
+      padding: 0px;
+  }
+
+  #blog-post .content {
+    width: 100%;
+  }
+
+  #blog-post .toc {
+      position: relative;
+      margin-bottom: 20px;
+      width: 100%;
+      order: -1; /* Place TOC above the blog content */
+  }
+
+  .blog-content {
+      width: 100%;
+  }
+
+  .blog-header {
+      margin-left: 0;
+  }
+}
+
+/* Additional styles for better readability and spacing */
+.blog-container .table-of-contents ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.blog-container .table-of-contents ul li {
+  margin-bottom: 10px;
+}
+
+.blog-container .table-of-contents ul li a {
+  color: #007AFF;
+  text-decoration: none;
+}
+
+.blog-container .table-of-contents ul li a:hover {
+  text-decoration: underline;
+}

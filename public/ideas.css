@@ -1,0 +1,171 @@
+body {
+  font-family: 'Inter', "-apple-system", "system-ui", 'System UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #18181b;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+p {
+  margin: auto;
+  margin-bottom: 4px;
+}
+
+.title-section {
+  display: none; /* Hide by default */
+  text-align: left; /* Left align text */
+  padding: 20px; /* Add padding if needed */
+}
+
+.container {
+  max-width: 1080px;
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.ideas-section {
+  width: 60%;
+}
+
+.form-section {
+  width: 35%;
+}
+
+h1, h2 {
+  color: #fff;
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+#idea-form {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid #3f3f46;
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 44px;
+  position: sticky; 
+  top: 100px;
+}
+
+input, textarea {
+  font-size: 1em;
+  padding: 12px;
+  margin: 5px 0 15px;
+  border-radius: 12px;
+  line-height: 150%;
+  border: 1px solid #3f3f46;
+  background-color: #18181b;
+  color: #fff;
+  font-family: 'Inter', "-apple-system", "system-ui", 'System UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+input::placeholder, textarea::placeholder {
+  font-family: 'Inter', "-apple-system", "system-ui", 'System UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  font-size: 1em;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: #007AFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+button:hover {
+  background-color: #3f3f46;
+  transition: 200ms;
+}
+
+#submitted-feedback {
+  margin-top: 20px;
+}
+
+.feedback-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #27272a;
+  padding: 16px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.feedback-content {
+  flex: 1;
+  font-size: 1.1em;
+}
+
+.feedback-votes {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.upvote-btn {
+  background: none;
+  color: white;
+  border: none;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-left: 8px;
+  margin-right: 8px;
+  transform: translateY(-4px);
+}
+
+.upvote-btn.blue {
+  color: #007AFF;
+  padding: 20px;
+  border: 0.5px solid #3f3f46;
+}
+
+.vote-count {
+  font-size: 1.2em;
+  margin-right: 5px;
+  margin-left: 16px;
+  color: white;
+}
+
+.user-name {
+  color: #52525b;
+  font-size: 0.9em;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .title-section {
+    display: block; /* Show on mobile */
+    margin: 0px;
+  }
+  .ideas-section h2 {
+    display: none; /* Hide the Ideas & Feedback title on mobile */
+  }
+  .form-section {
+    width: 100%;
+    order: 1; /* Place form below ideas on mobile */
+  }
+  .ideas-section {
+    width: 100%;
+    order: 2; /* Place ideas above form on mobile */
+  }
+  #idea-form {
+    margin-top: 0; /* Remove top margin on mobile */
+  }
+  .container {
+    margin-top: 0px;
+}
