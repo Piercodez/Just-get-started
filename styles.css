@@ -2,7 +2,7 @@ body {
   font-family: "-apple-system", "system-ui", 'System UI', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
   margin: 50px;
-  background-color: #010203;
+  background-color: #000;
   color: #FFFFFF;
 }
 
@@ -13,7 +13,7 @@ body {
 
 #pricing {
   text-align: right;
-  color: #ffffff3d
+  color: #000
 }
 
 .a {
