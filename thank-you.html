@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank you! | pomodorotimers.com</title>
+    <meta name="description" content="Boost your productivity with our 25-minute Pomodoro Timer app. Manage your tasks effectively with our integrated Kanban board.">
+    <meta name="keywords" content="Pomodoro Timer, Productivity, Time Management, Kanban Board, Focus, Work">
+    <meta name="author" content="pomodorotimers.com">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div id="pricing">
+                <a id="pricing" href="pricing.html" >Pricing</a>
+            </div id="pricing">
+        </header>
+        <main>
+            <section id="timer-section">
+                <div id="timer">25:00</div>
+                <button id="start">Start</button>
+                <button id="reset">Reset</button>
+            </section>
+
+            <section class="kanban-board">
+                <div class="kanban-column" id="todoColumn">
+                    <h2>To do</h2>
+                    <ul id="todoList" class="task-list">
+                        <!-- Todo items will be added dynamically here -->
+                    </ul>
+                    <div class="input-todo-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                        <input type="text" id="newTodo" placeholder="Add item and press enter" autofocus>
+                    </div>
+                </div>
+                <div class="kanban-column" id="doingColumn">
+                    <h2>Doing</h2>
+                    <ul id="doingList" class="task-list">
+                        <!-- Doing items will be added dynamically here -->
+                    </ul>
+                    <div class="input-todo-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                        <input type="text" id="newDoing" placeholder="Add item and press enter">
+                    </div>
+                </div>
+                <div class="kanban-column" id="doneColumn">
+                    <h2>Done</h2>
+                    <ul id="doneList" class="task-list">
+                        <!-- Done items will be added dynamically here -->
+                    </ul>
+                    <div class="input-todo-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                        <input type="text" id="newDone" placeholder="Add item and press enter">
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        <script src="script.js"></script>
+        <!-- <footer>
+            <p>© 2024 Pomodorotimers. All rights reserved.</p>
+        </footer> -->
+    </div>
+    <!-- 100% privacy-first analytics -->
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+</body>
+</html>

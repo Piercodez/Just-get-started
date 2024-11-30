@@ -1,77 +1,46 @@
+require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const { createClient } = require('@supabase/supabase-js');
-
 const app = express();
-const PORT = process.env.PORT || 5000;
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const cors = require('cors');
 
-// Middleware
-app.use(bodyParser.json());
 app.use(cors({
-  origin: 'http://127.0.0.1:5500', // Replace this with the origin of your frontend
+    origin: process.env.CLIENT_URL, // Your frontend URL
+    methods: ['POST'],
 }));
+app.use(express.json());
 
-// Supabase connection
-const supabaseUrl = 'https://uavcqheraaauwzfmdpyq.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhdmNxaGVyYWFhdXd6Zm1kcHlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjMxMzg2MDEsImV4cCI6MjAzODcxNDYwMX0.P0oMoNPIik2CuLO3AE5gy4lL9Qx8itsbWNvEwmp2uso';
+app.post('/create-checkout-session', async (req, res) => {
+    try {
+        const { priceId, metadata } = req.body;
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+        // Validate inputs
+        if (!priceId) {
+            return res.status(400).json({ error: 'Price ID is required.' });
+        }
 
-// Routes
-app.get('/ideas', async (req, res) => {
-  const { data, error } = await supabase
-    .from('ideas')
-    .select('*')
-    .order('votes', { ascending: false });
-  if (error) {
-    res.status(500).send(error.message);
-  } else {
-    res.json(data);
-  }
+        // Create Checkout Session for subscription
+        const session = await stripe.checkout.sessions.create({
+            line_items: [
+                {
+                    price: priceId,
+                    quantity: 1,
+                },
+            ],
+            mode: 'subscription',
+            success_url: `${process.env.CLIENT_URL}/thank-you.html?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${process.env.CLIENT_URL}/pricing.html`,
+            metadata: {
+                ...metadata,
+            },
+        });
+
+        res.json({ url: session.url });
+    } catch (error) {
+        console.error('Error creating checkout session:', error);
+        res.status(500).json({ error: error.message });
+    }
 });
 
-app.post('/ideas', async (req, res) => {
-  const { text, user_name } = req.body;
-  const { data, error } = await supabase
-    .from('ideas')
-    .insert([{ text, user_name, votes: 0 }])
-    .single();
-  if (error) {
-    res.status(500).send(error.message);
-  } else {
-    res.json(data);
-  }
-});
-
-app.put('/ideas/:id/upvote', async (req, res) => {
-  const { id } = req.params;
-  const { data, error } = await supabase
-    .from('ideas')
-    .update({ votes: supabase.rpc('increment', { x: 1 }) })
-    .eq('id', id)
-    .single();
-  if (error) {
-    res.status(500).send(error.message);
-  } else {
-    res.json(data);
-  }
-});
-
-app.put('/ideas/:id/downvote', async (req, res) => {
-  const { id } = req.params;
-  const { data, error } = await supabase
-    .from('ideas')
-    .update({ votes: supabase.rpc('increment', { x: -1 }) })
-    .eq('id', id)
-    .single();
-  if (error) {
-    res.status(500).send(error.message);
-  } else {
-    res.json(data);
-  }
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Start the server
+app.listen(4242, () => console.log('Server running on port 4242'));

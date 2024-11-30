@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pricing | pomodorotimers.com</title>
+    <meta name="description" content="Choose between our Free and Paid plans to boost your productivity.">
+    <meta name="keywords" content="Pomodoro Timer, Pricing, Subscription, Productivity">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="index.html">Home</a> |
+                <a href="pricing.html">Pricing</a>
+            </nav>
+        </header>
+        <main>
+            <section class="pricing-section">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <h2>Free Plan</h2>
+                    <p class="price">€0</p>
+                    <ul>
+                        <li>Basic Pomodoro Timer</li>
+                        <li>Kanban Board</li>
+                        <li>Up to 5 Tasks</li>
+                    </ul>
+                    <button disabled>Current Plan</button>
+                </div>
+
+                <!-- Lifetime Access via Payment Link -->
+                <div class="pricing-card">
+                    <h2>Lifetime Access</h2>
+                    <p class="price">€24 <span>One-time payment</span></p>
+                    <ul>
+                        <li>Unlimited Tasks</li>
+                        <li>Customizable Timers</li>
+                        <li>Premium Support</li>
+                    </ul>
+                    <!-- Payment Link Button -->
+                    <button id="payment-link-button">Buy Now</button>
+                </div>
+
+                <!-- Subscription Plans -->
+                <div class="pricing-card">
+                    <h2>Subscription Plans</h2>
+                    <p class="price">Choose Your Plan</p>
+                    <ul>
+                        <li>Unlimited Tasks</li>
+                        <li>Customizable Timers</li>
+                        <li>Premium Support</li>
+                    </ul>
+                    <!-- Subscription Form -->
+                    <form id="checkout-form">
+                        <!-- Plan Selection -->
+                        <label>
+                            <input type="radio" name="plan" value="price_basic" checked>
+                            Basic Plan | €1 per month
+                        </label><br>
+                        <label>
+                            <input type="radio" name="plan" value="price_premium">
+                            Premium Plan | €2 per month
+                        </label><br><br>
+                        <!-- Submit Button -->
+                        <button type="submit">Subscribe Now</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Payment Link Script -->
+    <script>
+        document.getElementById('payment-link-button').addEventListener('click', function() {
+            window.location.href = 'https://buy.stripe.com/test_bIY4hq5NV3In0GQaEE'; // Replace with your actual Payment Link URL
+        });
+    </script>
+
+    <!-- Checkout Form Script -->
+    <script>
+        // Initialize Stripe with your Publishable Key
+        const stripe = Stripe('pk_test_51QLoCrAugEF9WWa47XLg3oBLMvNCBE7WyXSUh4EyiyqA3hgSUN18v6ogNf63E0yi9ZFnhStACFKU2TOiGYgk2aZt00a6BPguN9');
+
+        const checkoutForm = document.getElementById('checkout-form');
+
+        checkoutForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Get selected plan
+            const plan = document.querySelector('input[name="plan"]:checked').value;
+
+            // Map plan to actual Price IDs
+            const priceIdMap = {
+                'price_basic': 'price_1QOmHKAugEF9WWa437tsbn8A',    // Replace with your Basic Plan Price ID (€99/month)
+                'price_premium': 'price_1QOmHfAugEF9WWa4g8NzJkae'   // Replace with your Premium Plan Price ID (€399/month)
+            };
+
+            const priceId = priceIdMap[plan];
+
+            // Optional: Add metadata
+            const metadata = {
+                // Include any metadata you want to pass
+                userId: 'user_12345', // Replace with actual user ID if available
+            };
+
+            // Create the checkout session
+            fetch('http://localhost:4242/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ priceId, metadata }),
+            })
+            .then((response) => response.json())
+            .then((session) => {
+                if (session.url) {
+                    // Redirect to Stripe Checkout
+                    window.location.href = session.url;
+                } else {
+                    alert('An error occurred while creating the checkout session.');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            });
+        });
+    </script>
+</body>
+</html>

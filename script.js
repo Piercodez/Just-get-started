@@ -7,9 +7,7 @@ let draggedItemIndex = null;
 let dropPositionIndicator = document.createElement('div');
 
 // Load tasks from localStorage
-window.onload = function() {
-    loadTodos();
-};
+window.addEventListener('load', loadTodos);
 
 // Initialize drop position indicator
 dropPositionIndicator.className = 'drop-position-indicator';
@@ -28,21 +26,30 @@ function toggleTimer() {
 }
 
 // Load tasks from localStorage or create a default task if empty
-window.onload = function() {
-    loadTodos();
-};
+window.addEventListener('load', loadTodos);
 
 // Function to load todos from localStorage or create a default task
 function loadTodos() {
     const savedTodos = localStorage.getItem('todoList');
-    if (savedTodos) {
+    console.log('Saved Todos (raw):', savedTodos); // Debug log to inspect saved data
+
+    if (savedTodos && JSON.parse(savedTodos).length > 0) {
         todoList = JSON.parse(savedTodos);
+        console.log('Loaded from localStorage:', todoList);
     } else {
-        // If no todos are saved, create a default task for first-time users
-        todoList = [{ text: 'Drag me to Done :)', status: 'todo' }];
+        // Create a default task for first-time users
+        todoList = [{ text: 'Drag me to done :)', status: 'doing' }];
+        console.log('Default task created:', todoList);
+        saveTodos(); // Save the default task to localStorage
     }
-    updateTodoList();
+
+    updateTodoList(); // Render the tasks
 }
+
+todoList = [{ text: 'Drag me to done :)', status: 'doing' }];
+console.log('Default task created:', todoList);
+saveTodos();
+
 
 function startTimer() {
     timer = setInterval(updateTimer, 1000); // Start the interval timer
